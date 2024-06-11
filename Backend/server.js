@@ -3,7 +3,7 @@ import cookieParser from "cookie-parser";
 import dotenv from 'dotenv';
 import cloudinary from "cloudinary";
 import path from "path";
-
+import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user-routes.js";
 import postRoutes from "./routes/post-routes.js";
@@ -19,6 +19,7 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
 })
+app.use(cors());
 app.use(express.json({limit:"5mb"}));
 app.use(cookieParser());
 app.use(express.urlencoded({extended:true}));
